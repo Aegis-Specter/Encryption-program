@@ -7,7 +7,7 @@ def main_menu():
     print ("2.Decryptor")
     print ("3.Exit")
 
-    choice = input()
+    choice = input("=")
     return choice
 
 def type ():
@@ -16,16 +16,38 @@ def type ():
 	print("1.Text")
 	print("2.File")
 
-	choice = input()
+	choice = input("=")
 	return choice
 
 def encrypt_text():
-  print (" [Encypt text] ")
-  pass
+    print (" [Encypt text] ")
+    text = input("Enter the text to be encrypted: ")
+    key = input("Enter the secret key: ")
+    shift = 0
+    for char in key:
+      shift += ord(char)
+
+    encrypted_text = ""
+
+    for char in text:
+      encrypted_text += chr((ord(char) + shift) % 256)
+    print(f"Encrypted Text: {encrypted_text}") 
+
 
 def decrypt_text():
-  print (" [Decrypt Text]")
-  pass
+    print (" [Decrypt Text]")
+    text = input("Enter the text to be Decrypted: ")
+    key = input("Enter the secret key: ")
+    shift = 0
+    for char in key:
+      shift += ord(char)
+
+    decrypted_text = ""
+    
+    for char in text:
+       decrypted_text += chr(ord(char) - shift)
+
+    print(f"Decrypted Text: {decrypted_text}")     
 
 def encrypt_file():
   print (" [Encrypt File]")
